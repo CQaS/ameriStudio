@@ -1,0 +1,57 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id_cliente         Int       @id @default(autoincrement())
+  nombre             String    @db.VarChar(100)
+  apellido           String    @db.VarChar(100)
+  telefono           String?   @db.VarChar(20)
+  email              String?   @db.VarChar(100)
+  fecha_nacimiento   DateTime? @db.Date
+  fecha_creacion     DateTime  @default(now()) @db.Timestamp(0)
+  fecha_actualizacion DateTime  @default(now()) @updatedAt @db.Timestamp(0)
+  reservas           Reserva[]
+}
+
+model Barbero {
+  id_barbero         Int       @id @default(autoincrement())
+  nombre             String    @db.VarChar(100)
+  apellido           String    @db.VarChar(100)
+  especialidad       String?   @db.VarChar(100)
+  fecha_creacion     DateTime  @default(now()) @db.Timestamp(0)
+  fecha_actualizacion DateTime  @default(now()) @updatedAt @db.Timestamp(0)
+}
+
+model Servicio {
+  id_servicio        Int       @id @default(autoincrement())
+  nombre             String    @db.VarChar(100)
+  descripcion        String?   @db.Text
+  duracion_estimada  DateTime  @db.Time(0)
+  precio             Decimal   @db.Decimal(10, 2)
+  fecha_creacion     DateTime  @default(now()) @db.Timestamp(0)
+  fecha_actualizacion DateTime  @default(now()) @updatedAt @db.Timestamp(0)
+  reservas           Reserva[]
+}
+
+model Reserva {
+  id_reserva         Int      @id @default(autoincrement())
+  id_cliente         Int
+  fecha              DateTime @db.Date
+  hora_inicio        DateTime @db.Time(0)
+  hora_fin           DateTime @db.Time(0)
+  id_servicio        Int
+  estado             String   @default("Pendiente") @db.VarChar(50)
+  notas              String?  @db.Text
+  fecha_creacion     DateTime @default(now()) @db.Timestamp(0)
+  fecha_actualizacion DateTime @default(now()) @updatedAt @db.Timestamp(0)
+  cliente            Cliente  @relation(fields: [id_cliente], references: [id_cliente], onDelete: Cascade)
+  servicio           Servicio @relation(fields: [id_servicio], references: [id_servicio], onDelete: Cascade)
+}
