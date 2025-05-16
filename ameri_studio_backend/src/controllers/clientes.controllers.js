@@ -160,10 +160,17 @@ export const clientes_eliminar = async (req, res) => {
             });
         }
         res.status(204).send();
+
     } catch (error) {
+
         if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2025') {
             return res.status(404).json({
                 Error: `Cliente con ID ${clienteId} no encontrado`
+            });
+
+        } else if (error instanceof Error && error.message.includes('turnos pendientes o confirmados')) {
+            return res.status(400).json({
+                Error: error.message
             });
         }
         console.error('Error al eliminar cliente:', error);

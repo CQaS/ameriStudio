@@ -12232,30 +12232,12 @@ p {
     margin: 12px 0;
 }
 
-.price-card.price-card-requried {
-    position: relative;
-    overflow: hidden;
-    padding: 50px 30px;
+.box {
+    transition: .5s;
 }
 
-.price-card.price-card-requried:after {
-    content: 'New';
-    position: absolute;
-    right: -25px;
-    top: 10px;
-    padding: 6px 10px;
-    width: 100px;
-    background: #F85C70;
-    color: #fff;
-    font-weight: 400;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    font-size: 12px;
-}
-
-.price-card.price-card-requried .num {
-    color: #F85C70;
+.box:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
 }
 
 .portfolio .filters {
@@ -12727,6 +12709,8 @@ pre .code {
 }
 
 .contact {
+    background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url(https://dos.ny.gov/sites/g/files/oee926/files/styles/wide_lead/public/media/2021/04/barbers-pole-on-a-barbershop-wall-in-the-evening-on-a-street-of-barcelona-spain-1200453963_1257x838.jpeg);
     position: relative;
     min-height: 700px;
     display: -webkit-box;

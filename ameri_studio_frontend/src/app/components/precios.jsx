@@ -9,7 +9,7 @@ function Precios() {
         </h1>
         <div className="row align-items-center">
           <div className="col-md-6 col-lg-3">
-            <div className="price-card text-center mb-4">
+            <div className="price-card text-center mb-4 box">
               <h3 className="price-card-title">Free</h3>
               <div className="price-card-cost">
                 <sup className="ti-money"></sup>
@@ -30,13 +30,13 @@ function Precios() {
                   1 <span className="text-muted">User</span>
                 </li>
               </ul>
-              <button className="btn btn-primary btn-rounded w-lg">
+              <button className="btn btn-primary btn-rounded ">
                 Subscribe
               </button>
             </div>
           </div>
           <div className="col-md-6 col-lg-3">
-            <div className="price-card text-center mb-4">
+            <div className="price-card text-center mb-4 box">
               <h3 className="price-card-title">Basic</h3>
               <div className="price-card-cost">
                 <sup className="ti-money"></sup>
@@ -57,13 +57,13 @@ function Precios() {
                   5 <span className="text-muted">User</span>
                 </li>
               </ul>
-              <button className="btn btn-primary btn-rounded w-lg">
+              <button className="btn btn-primary btn-rounded ">
                 Subscribe
               </button>
             </div>
           </div>
           <div className="col-md-6 col-lg-3">
-            <div className="price-card text-center price-card-requried mb-4">
+            <div className="price-card text-center mb-4 box">
               <h3 className="price-card-title">Exclusive</h3>
               <div className="price-card-cost">
                 <sup className="ti-money"></sup>
@@ -84,13 +84,13 @@ function Precios() {
                   15<span className="text-muted">User</span>
                 </li>
               </ul>
-              <button className="btn btn-primary btn-rounded w-lg">
+              <button className="btn btn-primary btn-rounded ">
                 Subscribe
               </button>
             </div>
           </div>
           <div className="col-md-6 col-lg-3">
-            <div className="price-card text-center mb-4">
+            <div className="price-card text-center mb-4 box">
               <h3 className="price-card-title">Pro</h3>
               <div className="price-card-cost">
                 <sup className="ti-money"></sup>
@@ -111,7 +111,7 @@ function Precios() {
                   Unlimite<span className="text-muted">User</span>
                 </li>
               </ul>
-              <button className="btn btn-primary btn-rounded w-lg">
+              <button className="btn btn-primary btn-rounded ">
                 Subscribe
               </button>
             </div>

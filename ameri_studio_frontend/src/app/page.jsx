@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import Navbar from "./components/navbar";
 import PersonalInfo from "./components/personalInfo";
@@ -6,18 +5,27 @@ import Resumen from "./components/resumen";
 import Hphc from "./components/hphc";
 import Servicios from "./components/servicios";
 import Precios from "./components/precios";
+import Blog from "./components/blog";
+import Contacto from "./components/contacto";
+import Footer from "./components/footer";
 
-function AmeriHome() {
+async function getClientes() {
+  const res = await fetch("http://localhost:3000/api/clientes");
+  console.log("res", res);
+  const data = await res.json();
+  return data;
+}
+
+async function AmeriHome() {
+  const clientes = await getClientes();
+  console.log("clientes", clientes);
+  clientes.Lista.map((cliente) => {
+    console.log("cliente", cliente);
+    console.log("cliente.nombre", cliente.nombreCompleto);
+  });
+
   return (
     <div>
-      <Link
-        href="components.html"
-        className="btn btn-primary btn-component"
-        data-spy="affix"
-        data-offset-top="600"
-      >
-        <i className="ti-shift-left-alt"></i> Components
-      </Link>
       <header className="header">
         <div className="container">
           <ul className="social-icons pt-3">
@@ -63,6 +71,9 @@ function AmeriHome() {
       <Hphc />
       <Servicios />
       <Precios />
+      <Blog />
+      <Contacto />
+      <Footer />
     </div>
   );
 }

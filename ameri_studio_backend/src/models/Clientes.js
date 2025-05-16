@@ -85,6 +85,24 @@ class Cliente {
 
     static async eliminar(id) {
         try {
+            // 1. Verificar si el cliente tiene turnos pendientes o confirmados
+            const turnosPendientes = await validarPrisma.reserva.findMany({
+                where: {
+                    id_cliente: parseInt(id),
+                    estado: {
+                        in: ['Pendiente', 'Confirmada']
+                    },
+                    fecha: {
+                        gte: new Date()
+                    }, // Considerar solo turnos futuros
+                },
+            });
+
+            // 2. Si tiene turnos pendientes, impedir la eliminación
+            if (turnosPendientes.length > 0) {
+                throw new Error(`El cliente tiene ${turnosPendientes.length} turnos pendientes o confirmados y no puede ser eliminado.`);
+            }
+
             await validarPrisma.cliente.delete({
                 where: {
                     id_cliente: parseInt(id),
