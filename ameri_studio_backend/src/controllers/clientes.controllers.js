@@ -13,27 +13,36 @@ export const clientes_lista = async (req, res) => {
 
         if (!clientesData || clientesData.length === 0) {
             return res.status(404).json({
-                Error: 'No se encontraron clientes'
+                ok: false,
+                message: 'No se encontraron clientes',
+                data: [],
             });
         }
 
-        const listaDeClientes = clientesData.map(clienteData => new Cliente(
-            clienteData.id_cliente,
-            clienteData.nombre,
-            clienteData.apellido,
-            clienteData.telefono,
-            clienteData.email,
-            clienteData.fecha_nacimiento
-        ).obtenerInfo());
+        const listaDeClientes = clientesData.map(clienteData =>
+            new Cliente(
+                clienteData.id_cliente,
+                clienteData.nombre,
+                clienteData.apellido,
+                clienteData.telefono,
+                clienteData.email,
+                clienteData.fecha_nacimiento
+            ).obtenerInfo()
+        );
 
-        res.json({
-            Lista: listaDeClientes
+        return res.status(200).json({
+            ok: true,
+            message: 'Clientes obtenidos correctamente',
+            data: listaDeClientes,
         });
 
     } catch (err) {
-        console.error(err);
+        console.error('[clientes_lista] Error:', err);
+
         return res.status(500).json({
-            Error: 'Algo falló al obtener la lista de clientes',
+            ok: false,
+            message: 'Error interno al obtener los clientes',
+            error: process.env.NODE_ENV === 'development' ? err.message : null,
         });
     }
 };

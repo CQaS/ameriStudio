@@ -2,7 +2,7 @@ import React from "react";
 
 function Contacto() {
   return (
-    <div className="section contact" id="contact">
+    <div className="section contact" id="contacto">
       <div id="map" className="map"></div>
       <div className="container">
         <div className="row">

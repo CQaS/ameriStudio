@@ -1,13 +1,26 @@
 "use client";
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import $ from "jquery";
+import ModalReservas from "./modalReservas";
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleReservaSubmit = (formData) => {
+    console.log("Datos de la Reserva desde el Navbar:", formData);
+    // Aquí iría la lógica para enviar los datos reales al backend
   };
 
   return (
@@ -41,7 +54,7 @@ function Navbar() {
             </a>
           </div>
           <div className="nav-item">
-            <a href="/servicios" className="hover:text-blue-800 nav-link">
+            <a href="#servicios" className="hover:text-blue-800 nav-link">
               Servicios
             </a>
           </div>
@@ -56,16 +69,19 @@ function Navbar() {
             </a>
           </div>
           <div className="nav-item">
-            <a href="/contacto" className="hover:text-blue-800 nav-link">
+            <a href="#contacto" className="hover:text-blue-800 nav-link">
               Contacto
             </a>
           </div>
         </div>
 
         <div className="hidden md:block">
-          <a href="/reservar" className="nav-link">
-            Reservar Cita
-          </a>
+          <button
+            onClick={openModal}
+            className="bg-gradient-to-r from-blue-500 via-orange-500 to-white text-gray-800 py-2.5 px-6 rounded-full shadow-lg font-semibold hover:shadow-xl transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+          >
+            ¡Reservar Turno!
+          </button>
         </div>
 
         <div className="md:hidden">
@@ -107,6 +123,14 @@ function Navbar() {
           Reservar Cita
         </a>
       </div>
+
+      {/* Modal */}
+      {/* Renderiza el componente ModalReserva */}
+      <ModalReservas
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onSubmit={handleReservaSubmit}
+      />
     </nav>
   );
 }

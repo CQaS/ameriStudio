@@ -2,10 +2,10 @@ import React from "react";
 
 function Servicios() {
   return (
-    <section className="section" id="service">
+    <section className="section" id="servicios">
       <div className="container">
         <h2 className="mb-5 pb-4">
-          <span className="text-danger">My</span> Services
+          <span className="text-danger">Mis</span> Servicios
         </h2>
         <div className="row">
           <div className="col-md-4 col-sm-6">

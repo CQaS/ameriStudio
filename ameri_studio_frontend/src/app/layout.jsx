@@ -29,7 +29,13 @@ export default function RootLayout({ children }) {
         <meta name="author" content="Esteban_Dev"></meta>
         <title>Ameri Barberia</title>
       </head>
-      <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+      <body
+        data-spy="scroll"
+        data-target=".navbar"
+        data-offset="40"
+        id="home"
+        className="bg-light dark:bg-dark"
+      >
         {children}
       </body>
     </html>
